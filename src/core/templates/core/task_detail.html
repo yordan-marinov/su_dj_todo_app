@@ -1,0 +1,8 @@
+<!-- By default 'task' is 'object' to rename it 
+we need to change it into views with context-object-name variable or:
+context-object-name='task' -->
+<h1>Task: {{ task }}</h1>
+<br>
+<p>{{ task.description }}</p>
+<br>
+<a href="{% url 'tasks' %}">Go Back</a>
