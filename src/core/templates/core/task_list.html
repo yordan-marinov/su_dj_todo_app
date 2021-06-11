@@ -1,18 +1,20 @@
+{% extends 'core/base.html' %} 
+{% block content %}
 
 {% if request.user.is_authenticated %}
-  <p>{{ request.user }}</p> 
+  <p>{{ request.user }}</p>
   <a href="{% url 'logout' %}">Logout</a>
 {% else %}
-  <a href="{% url 'login' %}">Login</a>  
+  <a href="{% url 'login' %}">Login</a>
 {% endif %}
-  
-<hr>
+
+<hr />
 <h1>My TODO list</h1>
 <a href="{% url 'new' %}">Add Task</a>
 
 <form method="GET">
-  <input type="text" name='search_area' value="{{ search_input }}">
-  <input type="submit" value="Search">
+  <input type="text" name="search_area" value="{{ search_input }}" />
+  <input type="submit" value="Search" />
 </form>
 
 <table>
@@ -25,7 +27,7 @@
   {% for task in tasks %}
   <tr>
     <td>{{ task.title }}</td>
-    <td><a href="{% url 'task' task.id %}">View</a></td>
+    <!-- <td><a href="{% url 'task' task.id %}">View</a></td> -->
     <td><a href="{% url 'edit' task.id %}">Edit</a></td>
     <td><a href="{% url 'delete' task.id %}">Delete</a></td>
   </tr>
@@ -33,3 +35,5 @@
   <h3>No items in list</h3>
   {% endfor %}
 </table>
+
+{% endblock content %}
